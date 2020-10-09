@@ -1,0 +1,30 @@
+  <div>
+    <form [formGroup]="doForm" (ngSubmit)="add()">
+        <input type="text" formControlName="title" id="myInput" >
+        <input type="submit" class="addBtn" value="Add">
+        <button type="button" (click)="del()" *ngIf="check">Delete</button>
+    </form>
+  </div>
+
+ 
+
+  <div class="lets">
+    <ul id="myUl">
+      <li *ngFor="let work of works; let i=index;">
+        <input type="checkbox" (click)="ind(i)" [checked]="work.selected==true">
+        <!--strike-->
+        <input type="radio" (click)="select(i)" [checked]="work.strike==true">
+        <span  class="todo-work" [ngClass]="work.strike== true?'complete':work.strike">
+          {{work.item}}
+        </span>
+        
+        <button class="close-button" aria-label="Close alert" type="button" data-close (click)="delete(i)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        
+      </li>
+     
+    </ul>
+  </div>
+  
+<router-outlet></router-outlet>
